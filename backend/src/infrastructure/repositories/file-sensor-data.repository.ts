@@ -28,13 +28,13 @@ export class FileSensorDataRepository implements ISensorDataRepository {
 
   async delete(id: number): Promise<void> {
     const data = await this.readFile();
-    const filtered = data.filter(item => item.id !== id);
+    const filtered = data.filter((item) => item.id !== id);
     await this.writeFile(filtered);
   }
 
   async update(id: number, update: Partial<SensorData>): Promise<SensorData> {
     const data = await this.readFile();
-    const index = data.findIndex(d => d.id === id);
+    const index = data.findIndex((d) => d.id === id);
     if (index === -1) throw new Error('Not found');
     data[index] = { ...data[index], ...update };
     await this.writeFile(data);

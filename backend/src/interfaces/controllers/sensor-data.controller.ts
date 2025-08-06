@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Delete, Put, Param, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Delete,
+  Put,
+  Param,
+  Body,
+} from '@nestjs/common';
 import { FileSensorDataRepository } from '../../infrastructure/repositories/file-sensor-data.repository';
 import { GetAllSensorData } from 'src/application/use-cases/get-all-sensor-data.use-case';
 import { CreateSensorDataDto } from '../dtos/create-sensor-data.dto';
@@ -25,7 +33,10 @@ export class SensorDataController {
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() dto: Partial<CreateSensorDataDto>) {
+  async update(
+    @Param('id') id: string,
+    @Body() dto: Partial<CreateSensorDataDto>,
+  ) {
     return this.repo.update(Number(id), dto);
   }
 }
