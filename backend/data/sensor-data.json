@@ -1,0 +1,7 @@
+[
+  { "id": 1, "device_id": "abc123", "timestamp": "2024-05-01T12:00:00Z", "temperature": 23.5, "humidity": 60 },
+  { "id": 2, "device_id": "abc123", "timestamp": "2024-05-01T12:01:00Z", "temperature": 22.0, "humidity": 58 },
+  { "id": 3, "device_id": "abc123", "timestamp": "2024-05-01T12:02:00Z", "temperature": 24.0, "humidity": 62 },
+  { "id": 4, "device_id": "xyz789", "timestamp": "2024-05-01T12:03:00Z", "temperature": 21.0, "humidity": 59 },
+  { "id": 5, "device_id": "xyz789", "timestamp": "2024-05-01T12:04:00Z", "temperature": 22.5, "humidity": 57 }
+]

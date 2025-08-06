@@ -3,7 +3,7 @@ import { SensorData } from '../../domain/entities/sensor-data.entity';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 
-const DATA_PATH = path.join(__dirname, '../../../../data/sensor-data.json');
+const DATA_PATH = path.join(process.cwd(), 'data/sensor-data.json');
 
 export class FileSensorDataRepository implements ISensorDataRepository {
   private async readFile(): Promise<SensorData[]> {
