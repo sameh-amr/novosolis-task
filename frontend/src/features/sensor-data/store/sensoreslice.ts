@@ -1,8 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Sensor, SensorState } from '../types/sensor';
 
-
-
 const initialState: SensorState = {
   data: [],
   loading: false,
@@ -26,7 +24,7 @@ export const sensorSlice = createSlice({
       state.data.push(action.payload);
     },
     removeSensor: (state, action: PayloadAction<number>) => {
-      state.data = state.data.filter(sensor => sensor.id !== action.payload);
+      state.data = state.data.filter((sensor) => sensor.id !== action.payload);
     },
   },
 });
