@@ -51,6 +51,7 @@ const Dashboard: React.FC = () => {
 
   // Handlers
   const handleAdd = async (sensor: Omit<Sensor, 'id'>): Promise<void> => {
+    console.log('handling.add');
     try {
       const newSensor = await createSensor(sensor);
       dispatch(addSensor(newSensor));
