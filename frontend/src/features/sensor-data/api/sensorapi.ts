@@ -17,5 +17,5 @@ export const deleteSensor = async (id: number): Promise<void> => {
 };
 
 export const updateSensor = async (id: number, sensor: Sensor): Promise<void> => {
-  await apiClient.put(`/api/sensor-data/${id}`, sensor);
+  await apiClient.put(`/sensor-data/${id}`, sensor);
 };
