@@ -12,17 +12,14 @@ interface SensorTableProps {
 }
 
 const SensorTable: React.FC<SensorTableProps> = ({ data, onDelete, onUpdate }) => {
-  const [editModalVisible, setEditModalVisible] = useState(false);
   const [editingSensor, setEditingSensor] = useState<Sensor | null>(null);
 
   const handleEdit = (sensor: Sensor) => {
     setEditingSensor(sensor);
-    setEditModalVisible(true);
   };
 
   const handleUpdate = (id: number, updatedData: Partial<Sensor>) => {
     onUpdate(id, updatedData);
-    setEditModalVisible(false);
     setEditingSensor(null);
   };
 
@@ -153,9 +150,8 @@ const SensorTable: React.FC<SensorTableProps> = ({ data, onDelete, onUpdate }) =
       </Card>
 
       <EditModal
-        visible={editModalVisible}
+        visible={!!editingSensor}
         onCancel={() => {
-          setEditModalVisible(false);
           setEditingSensor(null);
         }}
         onSave={handleUpdate}
