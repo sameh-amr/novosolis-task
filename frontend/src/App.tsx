@@ -31,6 +31,7 @@ const Dashboard: React.FC = () => {
 
   const [filterDeviceId, setFilterDeviceId] = useState('');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('desc');
+  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
 
   useEffect(() => {
     const loadData = async (): Promise<void> => {
@@ -83,6 +84,15 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  // Modal handlers
+  const showAddModal = () => {
+    setIsAddModalVisible(true);
+  };
+
+  const handleAddModalCancel = () => {
+    setIsAddModalVisible(false);
+  };
+
   const filteredData = useMemo(() => {
     let result = [...data];
     if (filterDeviceId) {
@@ -119,7 +129,12 @@ const Dashboard: React.FC = () => {
             setSortOrder={setSortOrder}
             uniqueDeviceIds={uniqueDeviceIds}
           />
-          <AddSensorForm onAdd={(sensor) => void handleAdd(sensor)} />
+          <AddSensorForm
+            onAdd={(sensor) => void handleAdd(sensor)}
+            isModalVisible={isAddModalVisible}
+            showModal={showAddModal}
+            handleCancel={handleAddModalCancel}
+          />
           <SensorTable
             data={filteredData}
             onUpdate={(id, changes) => void handleUpdate(id, changes)}
