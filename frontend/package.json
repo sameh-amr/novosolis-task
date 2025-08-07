@@ -25,7 +25,13 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "lint": "eslint . --ext .ts,.tsx",
+  "lint:fix": "eslint . --ext .ts,.tsx --fix",
+  "typecheck": "tsc --noEmit",
+  "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+  "validate": "npm run typecheck && npm run lint && npm run format"
   },
   "eslintConfig": {
     "extends": [
