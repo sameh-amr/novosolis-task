@@ -22,8 +22,9 @@ export class SensorDataController {
 
   @Post()
   async create(@Body() dto: CreateSensorDataDto) {
-    const id = Date.now(); // simple ID
-    const data = { id, ...dto };
+    const id = Date.now();
+
+    const data = { id, timestamp: new Date().toISOString(), ...dto };
     return this.repo.create(data);
   }
 

@@ -22,22 +22,16 @@
   },
   {
     "id": 4,
-    "device_id": "xyz789",
+    "device_id": "hiii",
     "timestamp": "2024-05-01T12:03:00Z",
     "temperature": 21,
     "humidity": 59
   },
   {
     "id": 5,
-    "device_id": "xyz789",
+    "device_id": "hi 1",
     "timestamp": "2024-05-01T12:04:00Z",
     "temperature": 22.5,
     "humidity": 57
-  },
-  {
-    "id": 1754569301497,
-    "device_id": "test new id",
-    "temperature": 50,
-    "humidity": 75
   }
 ]
