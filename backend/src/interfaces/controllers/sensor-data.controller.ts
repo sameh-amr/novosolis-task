@@ -10,7 +10,7 @@ import {
 import { FileSensorDataRepository } from '../../infrastructure/repositories/file-sensor-data.repository';
 import { GetAllSensorData } from 'src/application/use-cases/get-all-sensor-data.use-case';
 import { CreateSensorDataDto } from '../dtos/create-sensor-data.dto';
-@Controller('sensor-data')
+@Controller('/api/sensor-data')
 export class SensorDataController {
   private repo = new FileSensorDataRepository();
 
