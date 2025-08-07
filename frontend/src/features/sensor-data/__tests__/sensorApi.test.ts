@@ -50,7 +50,7 @@ describe('Sensor Data API - GET Endpoint', () => {
     // Assert
     expect(Array.isArray(result)).toBe(true);
     expect(result).toHaveLength(2);
-    
+
     // Check first sensor object structure
     const firstSensor = result[0];
     expect(firstSensor).toHaveProperty('id');
@@ -58,7 +58,7 @@ describe('Sensor Data API - GET Endpoint', () => {
     expect(firstSensor).toHaveProperty('timestamp');
     expect(firstSensor).toHaveProperty('temperature');
     expect(firstSensor).toHaveProperty('humidity');
-    
+
     // Check data types
     expect(typeof firstSensor.id).toBe('number');
     expect(typeof firstSensor.device_id).toBe('string');
@@ -94,8 +94,8 @@ describe('Sensor Data API - GET Endpoint', () => {
     const apiError = {
       response: {
         status: 500,
-        data: { message: 'Internal Server Error' }
-      }
+        data: { message: 'Internal Server Error' },
+      },
     };
     mockedApiClient.get.mockRejectedValueOnce(apiError);
 
@@ -111,7 +111,7 @@ describe('Sensor Data API - GET Endpoint', () => {
     const result = await fetchSensors();
 
     // Assert
-    result.forEach(sensor => {
+    result.forEach((sensor) => {
       // Required fields validation
       expect(sensor.id).toBeDefined();
       expect(sensor.device_id).toBeDefined();
