@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/unbound-method */
 import { fetchSensors } from '../api/sensorapi';
 import apiClient from '../../../shared/api/client';
 

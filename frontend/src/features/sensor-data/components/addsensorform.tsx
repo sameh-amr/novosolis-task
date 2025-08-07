@@ -18,7 +18,7 @@ const AddSensorForm: React.FC<AddSensorFormProps> = ({
 }) => {
   const [form] = Form.useForm();
 
-  const onFinish = (values: Omit<Sensor, 'id'>) => {
+  const onFinish = (values: Omit<Sensor, 'id'>): void => {
     onAdd(values);
     form.resetFields();
     handleCancel();
