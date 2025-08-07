@@ -32,7 +32,10 @@ const FilterSort: React.FC<FilterSortProps> = ({
         ))}
       </Select>
 
-      <Radio.Group value={sortOrder} onChange={(e) => setSortOrder(e.target.value)}>
+      <Radio.Group
+        value={sortOrder}
+        onChange={(e) => setSortOrder(e.target.value as 'asc' | 'desc')}
+      >
         <Radio.Button value="asc">Oldest First</Radio.Button>
         <Radio.Button value="desc">Newest First</Radio.Button>
       </Radio.Group>
