@@ -1,6 +1,5 @@
 import React from 'react';
-import { Card } from 'antd';
-import { Thermometer, Droplets, Smartphone, Clock } from 'lucide-react';
+import { Card, Col, Row } from 'antd';
 import type { Sensor } from '../types/sensor';
 
 interface StatsCardsProps {
@@ -8,61 +7,34 @@ interface StatsCardsProps {
 }
 
 const StatsCards: React.FC<StatsCardsProps> = ({ data }) => {
-  const avgTemperature =
-    data.length > 0
-      ? (data.reduce((sum, d) => sum + d.temperature, 0) / data.length).toFixed(1)
-      : '0';
+  const average = (arr: number[]): number =>
+    arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : 0;
 
-  const avgHumidity =
-    data.length > 0 ? (data.reduce((sum, d) => sum + d.humidity, 0) / data.length).toFixed(1) : '0';
+  const temperatures = data.map((d) => d.temperature);
+  const humidities = data.map((d) => d.humidity);
 
-  const uniqueDevices = new Set(data.map((d) => d.device_id)).size;
-  const lastUpdate =
-    data.length > 0
-      ? new Date(Math.max(...data.map((d) => new Date(d.timestamp).getTime()))).toLocaleTimeString()
-      : 'N/A';
-
-  const stats = [
-    {
-      title: 'Avg Temperature',
-      value: `${avgTemperature}°C`,
-      icon: <Thermometer className="h-6 w-6 text-orange-500" />,
-      bgColor: 'bg-orange-50',
-    },
-    {
-      title: 'Avg Humidity',
-      value: `${avgHumidity}%`,
-      icon: <Droplets className="h-6 w-6 text-blue-500" />,
-      bgColor: 'bg-blue-50',
-    },
-    {
-      title: 'Active Devices',
-      value: uniqueDevices.toString(),
-      icon: <Smartphone className="h-6 w-6 text-green-500" />,
-      bgColor: 'bg-green-50',
-    },
-    {
-      title: 'Last Update',
-      value: lastUpdate,
-      icon: <Clock className="h-6 w-6 text-purple-500" />,
-      bgColor: 'bg-purple-50',
-    },
-  ];
+  const avgTemp = average(temperatures).toFixed(1);
+  const avgHumidity = average(humidities).toFixed(1);
+  const activeDevices = new Set(data.map((d) => d.device_id)).size;
+  const lastUpdate = data.length
+    ? new Date(Math.max(...data.map((d) => new Date(d.timestamp).getTime()))).toLocaleString()
+    : 'N/A';
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-      {stats.map((stat, index) => (
-        <Card key={index} className="hover:shadow-md transition-shadow duration-200">
-          <div className="flex items-center space-x-4">
-            <div className={`p-3 rounded-lg ${stat.bgColor}`}>{stat.icon}</div>
-            <div>
-              <p className="text-sm text-gray-600">{stat.title}</p>
-              <p className="text-xl font-semibold text-gray-900">{stat.value}</p>
-            </div>
-          </div>
-        </Card>
-      ))}
-    </div>
+    <Row gutter={16} className="mb-6">
+      <Col span={6}>
+        <Card title="Average Temperature">{avgTemp}°C</Card>
+      </Col>
+      <Col span={6}>
+        <Card title="Average Humidity">{avgHumidity}%</Card>
+      </Col>
+      <Col span={6}>
+        <Card title="Active Devices">{activeDevices}</Card>
+      </Col>
+      <Col span={6}>
+        <Card title="Last Update">{lastUpdate}</Card>
+      </Col>
+    </Row>
   );
 };
 
