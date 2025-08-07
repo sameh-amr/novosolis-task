@@ -83,7 +83,6 @@ const Dashboard: React.FC = () => {
     }
   };
 
-  // Filtering and sorting
   const filteredData = useMemo(() => {
     let result = [...data];
     if (filterDeviceId) {

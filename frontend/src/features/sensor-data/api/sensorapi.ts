@@ -1,10 +1,21 @@
 import type { Sensor } from '../types/sensor';
 import apiClient from '../../../shared/api/client';
+import type { AxiosResponse } from 'axios';
 
-export const fetchSensors = (): Promise<Sensor[]> => apiClient.get('/sensor-data');
-export const createSensor = (sensor: Omit<Sensor, 'id'>): Promise<Sensor> =>
-  apiClient.post('/sensor-data', sensor);
-export const deleteSensor = (id: number): Promise<void> => apiClient.delete(`/sensor-data/${id}`);
-export const updateSensor = (id: number, sensor: Sensor): Promise<void> => {
-  return apiClient.put(`/sensor-data/${id}`, sensor);
+export const fetchSensors = async (): Promise<Sensor[]> => {
+  const response: AxiosResponse<Sensor[]> = await apiClient.get('/sensor-data');
+  return response.data;
+};
+
+export const createSensor = async (sensor: Omit<Sensor, 'id'>): Promise<Sensor> => {
+  const response: AxiosResponse<Sensor> = await apiClient.post('/sensor-data', sensor);
+  return response.data;
+};
+
+export const deleteSensor = async (id: number): Promise<void> => {
+  await apiClient.delete(`/sensor-data/${id}`);
+};
+
+export const updateSensor = async (id: number, sensor: Sensor): Promise<void> => {
+  await apiClient.put(`/sensor-data/${id}`, sensor);
 };
