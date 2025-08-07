@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Sensor, SensorState } from '../types/sensor';
+import type { PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import type { Sensor, SensorState } from '../types/sensor';
 
 const initialState: SensorState = {
   data: [],

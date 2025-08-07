@@ -1,4 +1,4 @@
-import { Sensor } from '../types/sensor';
+import type { Sensor } from '../types/sensor';
 import apiClient from '../../../shared/api/client';
 
 export const fetchSensors = (): Promise<Sensor[]> => apiClient.get('/sensor-data');
