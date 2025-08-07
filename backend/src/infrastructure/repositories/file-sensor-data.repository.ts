@@ -4,6 +4,7 @@ import * as fs from 'fs/promises';
 import * as path from 'path';
 
 const DATA_PATH = path.join(process.cwd(), 'data/sensor-data.json');
+console.log('🚨 Data path being used:', DATA_PATH);
 
 export class FileSensorDataRepository implements ISensorDataRepository {
   private async readFile(): Promise<SensorData[]> {
